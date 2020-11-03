@@ -1,0 +1,37 @@
+# Idea files
+
+*.iml
+.gradle
+
+# Local
+
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+
+# Ideas stuff
+
+/.idea/misc.xml
+/.idea/codeStyle/
+/.idea/runConfiguration-xml
+/.idea/vcs.xml
+/.idea/gradle.xml
+/.idea/name
+/.idea/copyright
+/.idea/inspectionProfiles/
+/.idea/.gitignore
+/.idea/jarRepositories.xml
+/.idea/compiler.xml
+
+# Trashy
+
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
