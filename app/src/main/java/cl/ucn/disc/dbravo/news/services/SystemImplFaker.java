@@ -1,11 +1,20 @@
 /*
  * Copyright 2020 Diego Bravo B
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ *  and associated documentation files (the "Software"), to deal in the Software without
+ *  restriction, including without limitation the rights to use, copy, modify, merge, publish,
+ *  distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom
+ *  the Software is furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all copies or
+ *  substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+ *  BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ *  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ *  DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
 package cl.ucn.disc.dbravo.news.services;
@@ -32,7 +41,7 @@ public class SystemImplFaker implements System {
      */
     private static Logger logger = LoggerFactory.getLogger(SystemImplFaker.class);
     /**
-     * The list that contains the news
+     * The list that contains the news.
      */
     private final List<News> newsList = new LinkedList<>();
 
@@ -63,26 +72,26 @@ public class SystemImplFaker implements System {
     }
 
     /**
-     * This function return a list with news
+     * This function return a list with news.
      *
      * @param size The size of the list.
      * @return The list with the News.
      */
     @Override
     public List<News> retrieveNews(final Integer size) {
-        // If the size given is bigger than the one from the list, return actual list
+        // If the size given is bigger than the one from the list, return actual list.
         if (size > this.newsList.size()) {
             return this.newsList;
         }
 
-        // Return the last "size" elements
+        // It returns a sublist between the index 0 - newList.size.
         return this.newsList.subList(newsList.size() - size, newsList.size());
     }
 
     /**
-     * Save a New and put it into the system
+     * Save a New and put it into the system.
      *
-     * @param news The new to be added
+     * @param news The new to be added.
      */
     @Override
     public void saveNews(final News news) {

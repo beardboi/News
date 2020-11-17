@@ -56,7 +56,7 @@ public class TestSystemImplFaker {
         // Test if the size is equal to 5
         Assertions.assertEquals(5, newsList.size(), "List size != 5");
         // Test if the size given is bigger than the actual
-        Assertions.assertTrue(system.retrieveNews(10).size() <= 10, "List size != 4");
+        Assertions.assertTrue(system.retrieveNews(10).size() <= 10, "List size != 10");
 
         // For each New in newsList
         for (News n : newsList) {
@@ -97,7 +97,7 @@ public class TestSystemImplFaker {
         // Test if the New is not null
         Assertions.assertNotNull(aNew);
         // Test if the size of the list is 5 (the initial values) + 1 (the one that was added)
-        Assertions.assertEquals(6, system.retrieveNews(5 + 1).size(), "The size is not 6");
+        Assertions.assertEquals(6, system.retrieveNews(5+1).size(), "The size is not 6");
 
         logger.debug("Done.");
     }
