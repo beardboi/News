@@ -39,7 +39,7 @@ public class SystemImplFaker implements System {
     /**
      * The logger
      */
-    private static Logger logger = LoggerFactory.getLogger(SystemImplFaker.class);
+    private static final Logger logger = LoggerFactory.getLogger(SystemImplFaker.class);
     /**
      * The list that contains the news.
      */
@@ -95,9 +95,20 @@ public class SystemImplFaker implements System {
      */
     @Override
     public void saveNews(final News news) {
-        // FIXME: Don't allow the duplicates news!
-        this.newsList.add(news);
-    }
+        boolean duplicated = false;
+        // Verify duplicated
+        for (News n : newsList) {
+            if (news.equals(n)) {
+                logger.debug("Duplicated news not allowed.");
+                duplicated = true;
+            }
 
+        }
+        // If the new is not duplicated, added it
+        if (!duplicated) {
+            this.newsList.add(news);
+        }
+
+    }
 
 }
