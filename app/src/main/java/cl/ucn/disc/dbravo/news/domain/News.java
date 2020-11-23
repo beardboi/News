@@ -95,7 +95,6 @@ public class News {
      * @param publishedAt The date of the new.
      */
     public News(String title, String author, String source, String description, String content, String url, String urlImg, ZonedDateTime publishedAt) {
-
         // Validations for the title
         Validation.minSize(title, 2, "title");
         this.title = title;
@@ -118,6 +117,7 @@ public class News {
 
         // Validation for the date of the new
         Validation.notNull(publishedAt, "publishedAt");
+        this.publishedAt = publishedAt;
 
         this.url = url;
         this.urlImg = urlImg;
