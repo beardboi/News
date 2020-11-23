@@ -27,37 +27,51 @@ import org.threeten.bp.ZonedDateTime;
  * @author Diego Bravo B
  */
 public class News {
+
     /**
      * Unique id
      */
     private Long id;
+
     /**
      * The new's title
-     * Restriction: not null, size > 2
+     * Restrictions: not null, size > 2
      */
     private String title;
+
     /**
      * The author of the new
+     * Restrictions: Not null, size > 2
      */
     private String author;
+
     /**
      * The description of the new
+     * Restrictions: Not null, size > 2
      */
     private String description;
+
     /**
      * The content of the new
+     * Restrictions: Not null, size > 2
      */
     private String content;
+
     /**
      * The url of the new
+     * Restrictions: Not null, size > 2
      */
     private String url;
+
     /**
      * The url of the image
+     * Restrictions: Not null
      */
     private String urlImg;
+
     /**
      * The date of publish
+     * Restrictions: Not null
      */
     private ZonedDateTime publishedAt;
 
@@ -105,67 +119,117 @@ public class News {
                 '}';
     }
 
+    /**
+     * @return The id.
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Set for the id attribute.
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * @return The title.
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * Set for the title attribute.
+     */
     public void setTitle(String title) {
         this.title = title;
     }
 
+    /**
+     * @return The author.
+     */
     public String getAuthor() {
         return author;
     }
 
+    /**
+     * Set for the author attribute.
+     */
     public void setAuthor(String author) {
         this.author = author;
     }
 
+    /**
+     * @return The description.
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Set for the description attribute.
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     * @return The content.
+     */
     public String getContent() {
         return content;
     }
 
+    /**
+     * Set for the content attribute.
+     */
     public void setContent(String content) {
         this.content = content;
     }
 
+    /**
+     * @return The url.
+     */
     public String getUrl() {
         return url;
     }
 
+    /**
+     * Set for the url attribute.
+     */
     public void setUrl(String url) {
         this.url = url;
     }
 
+    /**
+     * @return The urlImg.
+     */
     public String getUrlImg() {
         return urlImg;
     }
 
+    /**
+     * Set for the urlImg attribute.
+     */
     public void setUrlImg(String urlImg) {
         this.urlImg = urlImg;
     }
 
+    /**
+     * @return The publishedAt.
+     */
     public ZonedDateTime getPublishedAt() {
         return publishedAt;
     }
 
+    /**
+     * Set for the publishedAt attribute.
+     */
     public void setPublishedAt(ZonedDateTime publishedAt) {
         this.publishedAt = publishedAt;
     }
+
 }
+

@@ -20,11 +20,10 @@
 package cl.ucn.disc.dbravo.news.services;
 
 import java.util.List;
-
 import cl.ucn.disc.dbravo.news.domain.News;
 
 /**
- * The constracts from CU/UH
+ * The contracts from CU/UH
  *
  * @author Diego Bravo B
  */
@@ -44,5 +43,5 @@ public interface System {
      */
     void saveNews(News news);
 
-
 }
+

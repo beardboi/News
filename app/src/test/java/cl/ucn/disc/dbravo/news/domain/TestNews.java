@@ -19,7 +19,6 @@
 package cl.ucn.disc.dbravo.news.domain;
 
 import com.github.javafaker.Faker;
-
 import org.junit.jupiter.api.Test;
 import org.threeten.bp.ZoneId;
 import org.threeten.bp.ZonedDateTime;
@@ -30,13 +29,15 @@ import org.threeten.bp.ZonedDateTime;
  * @author Diego Bravo B
  */
 public class TestNews {
+
     /**
      * The test for the validations
      */
     @Test
     public void testValidation() {
         Faker faker = Faker.instance();
-        // Attributes for the new
+
+        // Attributes for the New
         Long id = Integer.toUnsignedLong(5);
         String title = faker.book().title();
         String author = faker.name().fullName();
@@ -46,12 +47,10 @@ public class TestNews {
         String urlImg = faker.company().url();
         ZonedDateTime zonedDateTime = org.threeten.bp.ZonedDateTime.now(ZoneId.of("-3"));
 
+        // Instance the new
         News testNew = new News(id, title, author, description, content, url, urlImg, zonedDateTime
         );
 
-        // TODO: finish this part of the code
-
     }
-
 
 }

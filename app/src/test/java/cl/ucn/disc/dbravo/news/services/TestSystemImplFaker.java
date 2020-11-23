@@ -20,16 +20,13 @@
 package cl.ucn.disc.dbravo.news.services;
 
 import com.github.javafaker.Faker;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.threeten.bp.ZoneId;
 import org.threeten.bp.ZonedDateTime;
-
 import java.util.List;
-
 import cl.ucn.disc.dbravo.news.domain.News;
 
 /**
@@ -38,6 +35,7 @@ import cl.ucn.disc.dbravo.news.domain.News;
  * @author Diego Bravo B
  */
 public class TestSystemImplFaker {
+
     /**
      * The logger
      */
@@ -87,6 +85,7 @@ public class TestSystemImplFaker {
 
         // Create a "New"
         Faker faker = Faker.instance();
+
         // The attributes of the New
         Long id = Integer.toUnsignedLong(5);
         String title = faker.book().title();
@@ -100,11 +99,13 @@ public class TestSystemImplFaker {
         // Instance the New
         News aNew = new News(id, title, author, description, content, url, urlImg, zonedDateTime
         );
+
         // Save the New into the system
         system.saveNews(aNew);
 
         // Test if the New is not null
         Assertions.assertNotNull(aNew);
+
         // Test if the size of the list is 5 (the initial values) + 1 (the one that was added)
         Assertions.assertEquals(6, system.retrieveNews(5+1).size(), "The size is not 6");
 
@@ -112,3 +113,4 @@ public class TestSystemImplFaker {
     }
 
 }
+
