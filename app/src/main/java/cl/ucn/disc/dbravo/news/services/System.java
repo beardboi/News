@@ -28,6 +28,7 @@ import cl.ucn.disc.dbravo.news.domain.News;
  * @author Diego Bravo B
  */
 public interface System {
+
     /**
      * Get the list of news
      *

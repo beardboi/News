@@ -20,6 +20,7 @@
 package cl.ucn.disc.dbravo.news.domain;
 
 import org.threeten.bp.ZonedDateTime;
+import cl.ucn.disc.dbravo.news.utils.Validation;
 
 /**
  * The domain model: News
@@ -44,6 +45,12 @@ public class News {
      * Restrictions: Not null, size > 2
      */
     private String author;
+
+    /**
+     * The source of the new
+     *
+     */
+    private String source;
 
     /**
      * The description of the new
@@ -76,34 +83,51 @@ public class News {
     private ZonedDateTime publishedAt;
 
     /**
-     * The constructor
+     * The constructor.
      *
-     * @param id          The id
-     * @param title       The title
-     * @param author      The author of the new
-     * @param description The description of the new
-     * @param content     The content of the new
-     * @param url         The url of the new
-     * @param urlImg      The url of the image
-     * @param publishedAt The date of the new
+     * @param title       The title.
+     * @param source      The source of the new.
+     * @param author      The author of the new.
+     * @param description The description of the new.
+     * @param content     The content of the new.
+     * @param url         The url of the new.
+     * @param urlImg      The url of the image.
+     * @param publishedAt The date of the new.
      */
-    public News(Long id, String title, String author, String description, String content, String url, String urlImg, ZonedDateTime publishedAt) {
-        // TODO: Add the validation
-        this.id = id;
+    public News(String title, String author, String source, String description, String content, String url, String urlImg, ZonedDateTime publishedAt) {
+
+        // Validations for the title
+        Validation.minSize(title, 2, "title");
         this.title = title;
+
+        // Validation for the author
+        Validation.minSize(author, 2, "author");
         this.author = author;
+
+        // Validation for the author
+        Validation.minSize(source, 2, "source");
+        this.source = source;
+
+        // Validation for the description
+        Validation.minSize(description, 2, "description");
         this.description = description;
+
+        // Validation for the content
+        Validation.notNull(content, "content");
         this.content = content;
+
+        // Validation for the date of the new
+        Validation.notNull(publishedAt, "publishedAt");
+
         this.url = url;
         this.urlImg = urlImg;
-        this.publishedAt = publishedAt;
 
     }
 
     /**
-     * This function return a string with the attributes of an instance object
+     * This function return a string with the attributes of an instance object.
      *
-     * @return The string with the attributes
+     * @return The string with the attributes.
      */
     @Override
     public String toString() {
@@ -231,5 +255,18 @@ public class News {
         this.publishedAt = publishedAt;
     }
 
+    /**
+     * @return The source
+     */
+    public String getSource() {
+        return source;
+    }
+
+    /**
+     * Set for the source attribute.
+     */
+    public void setSource(String source) {
+        this.source = source;
+    }
 }
 

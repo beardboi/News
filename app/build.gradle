@@ -49,4 +49,7 @@ dependencies {
     // Java Faker
     implementation 'com.github.javafaker:javafaker:1.0.2'
 
+    // Zero-Allocation-Hashing for XXHash
+    implementation 'net.openhft:zero-allocation-hashing:0.11'
+
 }

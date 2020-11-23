@@ -31,15 +31,17 @@ import java.util.List;
 import cl.ucn.disc.dbravo.news.domain.News;
 
 /**
- * The concrete class that implements the contracts
+ * The concrete class that implements the contracts.
  *
  * @author Diego Bravo B
  */
 public class SystemImplFaker implements System {
+
     /**
      * The logger
      */
     private static final Logger logger = LoggerFactory.getLogger(SystemImplFaker.class);
+
     /**
      * The list that contains the news.
      */
@@ -63,8 +65,10 @@ public class SystemImplFaker implements System {
             String url = faker.company().url();
             String urlImg = faker.company().url();
             ZonedDateTime zonedDateTime = org.threeten.bp.ZonedDateTime.now(ZoneId.of("-3"));
+
             // Instance a New
             News aNew = new News(id, title, author, description, content, url, urlImg, zonedDateTime);
+
             // Add it to the list
             this.newsList.add(aNew);
         }
