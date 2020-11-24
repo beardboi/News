@@ -37,19 +37,18 @@ public class TestNews {
     public void testValidation() {
         Faker faker = Faker.instance();
 
-        // Attributes for the New
-        Long id = Integer.toUnsignedLong(5);
+        // The attributes of the New
         String title = faker.book().title();
         String author = faker.name().fullName();
+        String source = faker.book().publisher();
         String description = faker.lorem().sentence();
         String content = faker.lorem().paragraph();
         String url = faker.company().url();
         String urlImg = faker.company().url();
-        ZonedDateTime zonedDateTime = org.threeten.bp.ZonedDateTime.now(ZoneId.of("-3"));
+        ZonedDateTime publishedDate = org.threeten.bp.ZonedDateTime.now(ZoneId.of("-3"));
 
-        // Instance the new
-        News testNew = new News(id, title, author, description, content, url, urlImg, zonedDateTime
-        );
+        // Instance a New
+        News aNew = new News(title, author, source, description, content, url, urlImg, publishedDate);
 
     }
 
