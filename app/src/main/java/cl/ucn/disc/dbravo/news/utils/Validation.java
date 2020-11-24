@@ -38,8 +38,8 @@ public final class Validation {
         notNull(value, message);
 
         // Checks if the value have the minimum size
-        if(value.length() > minSize) {
-            throw new IllegalArgumentException("The argument was null or has the wrong size.");
+        if(value.length() < minSize) {
+            throw new IllegalArgumentException("The argument was null or has the wrong size ->" + message);
         }
 
     }
