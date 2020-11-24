@@ -57,17 +57,17 @@ public class SystemImplFaker implements System {
 
         for (int i = 0; i < 5; i++) {
             // The attributes of the New
-            Long id = Integer.toUnsignedLong(i);
             String title = faker.book().title();
             String author = faker.name().fullName();
+            String source = faker.book().publisher();
             String description = faker.lorem().sentence();
             String content = faker.lorem().paragraph();
             String url = faker.company().url();
             String urlImg = faker.company().url();
-            ZonedDateTime zonedDateTime = org.threeten.bp.ZonedDateTime.now(ZoneId.of("-3"));
+            ZonedDateTime publishedDate = org.threeten.bp.ZonedDateTime.now(ZoneId.of("-3"));
 
             // Instance a New
-            News aNew = new News(id, title, author, description, content, url, urlImg, zonedDateTime);
+            News aNew = new News(title, author, source, description, content, url, urlImg, publishedDate);
 
             // Add it to the list
             this.newsList.add(aNew);
