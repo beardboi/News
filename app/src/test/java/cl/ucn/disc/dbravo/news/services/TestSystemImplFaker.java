@@ -87,18 +87,17 @@ public class TestSystemImplFaker {
         Faker faker = Faker.instance();
 
         // The attributes of the New
-        Long id = Integer.toUnsignedLong(5);
         String title = faker.book().title();
         String author = faker.name().fullName();
+        String source = faker.book().publisher();
         String description = faker.lorem().sentence();
-        String content = faker.lorem().paragraph();
+        String content = faker.lorem().paragraph(2);
         String url = faker.company().url();
         String urlImg = faker.company().url();
-        ZonedDateTime zonedDateTime = org.threeten.bp.ZonedDateTime.now(ZoneId.of("-3"));
+        ZonedDateTime publishedAt = org.threeten.bp.ZonedDateTime.now(ZoneId.of("-3"));
 
         // Instance the New
-        News aNew = new News(id, title, author, description, content, url, urlImg, zonedDateTime
-        );
+        News aNew = new News(title, author, source, description, content, url, urlImg, publishedAt);
 
         // Save the New into the system
         system.saveNews(aNew);
@@ -113,4 +112,3 @@ public class TestSystemImplFaker {
     }
 
 }
-
