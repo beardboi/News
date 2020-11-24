@@ -19,6 +19,7 @@
 
 package cl.ucn.disc.dbravo.news.domain;
 
+import net.openhft.hashing.LongHashFunction;
 import org.threeten.bp.ZonedDateTime;
 import cl.ucn.disc.dbravo.news.utils.Validation;
 
@@ -86,8 +87,8 @@ public class News {
      * The constructor.
      *
      * @param title       The title.
-     * @param source      The source of the new.
      * @param author      The author of the new.
+     * @param source      The source of the new.
      * @param description The description of the new.
      * @param content     The content of the new.
      * @param url         The url of the new.
@@ -106,6 +107,10 @@ public class News {
         // Validation for the author
         Validation.minSize(source, 2, "source");
         this.source = source;
+
+        // Assignment of the id
+        this.id = LongHashFunction.xx()
+                .hashChars(title + "|" + author  + "|" + source);
 
         // Validation for the description
         Validation.minSize(description, 2, "description");
@@ -269,4 +274,3 @@ public class News {
         this.source = source;
     }
 }
-
