@@ -124,7 +124,12 @@ public class News {
         Validation.notNull(publishedAt, "publishedAt");
         this.publishedAt = publishedAt;
 
+        // Validation for the URL
+        Validation.notNull(url, "url");
         this.url = url;
+
+        // Validation for the URL
+        Validation.notNull(urlImg, "urlImg");
         this.urlImg = urlImg;
 
     }
