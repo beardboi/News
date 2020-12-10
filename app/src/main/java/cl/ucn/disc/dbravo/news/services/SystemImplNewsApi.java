@@ -19,7 +19,12 @@
 
 package cl.ucn.disc.dbravo.news.services;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import com.kwabenaberko.newsapilib.models.Article;
+
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -27,10 +32,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.threeten.bp.ZoneId;
 import org.threeten.bp.ZonedDateTime;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import cl.ucn.disc.dbravo.news.domain.News;
 import cl.ucn.disc.dbravo.news.utils.Validation;
@@ -118,27 +129,49 @@ public class SystemImplNewsApi implements System {
     }
 
     /**
+     * The predicator of filter function.
+     *
+     * @param keyExtractor The key extractor.
+     * @param <T> The type of input of the predicate.
+     * @return The filter by key extractor.
+     */
+    @RequiresApi(api = Build.VERSION_CODES.N) // Fixme: Fix this line!
+    private static <T> Predicate<T> distintByKey(Function<? super T, ?> keyExtractor) {
+        Map<Object, Boolean> seen = new ConcurrentHashMap<>();
+        return t -> seen.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE);
+    }
+
+    /**
      * Get the list of news.
      *
-     * @param size The size of the list
-     * @return The list that contains the news
+     * @param size The size of the list.
+     * @return The list that contains the news.
      */
+    @RequiresApi(api = Build.VERSION_CODES.N) // Fixme: Fix this line!
     @Override
     public List<News> retrieveNews(Integer size) {
         try {
-            // FIXME: Add library import
+            // Get the list of Articles
             List<Article> articles = newsApiService.getTopHeadlines("technology", size);
 
-            List<News> news = new ArrayList<>();
+            // The list of Articles converted into a list of News
+            List<News> rarNews = new ArrayList<>();
 
             for (Article article : articles) {
-                news.add(toNews(article));
+                rarNews.add(toNews(article));
             }
-            return news;
+
+            // Return the news filtered and sorted by data
+            return rarNews.stream()
+                    // Remove the duplicated ones
+                    .filter(distintByKey(News::getId))
+                    // Order by date
+                    .sorted((k1, k2) -> k2.getPublishedAt().compareTo(k1.getPublishedAt()))
+                    .collect(Collectors.toList());
 
         } catch (IOException ex) {
-            logger.error("Error", ex);
-            return null;
+            // TODO: Encapsulate?
+            throw new RuntimeException(ex);
         }
 
     }
