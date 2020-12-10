@@ -68,7 +68,8 @@ dependencies {
 
     // SLF4J
     implementation 'org.slf4j:slf4j-api:1.7.30'
-    implementation 'org.slf4j:slf4j-simple:1.7.30'
+    implementation 'com.github.tony19:logback-android:2.0.0'
+    testImplementation 'org.slf4j:slf4j-simple:1.7.30'
 
     // Java Faker
     implementation 'com.github.javafaker:javafaker:1.0.2'
@@ -86,6 +87,10 @@ dependencies {
 
     // Leak Canary
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.5'
+
+    // FastAdapter + RecyclerView
+    implementation 'com.mikepenz:fastadapter:3.3.1'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
     // ACRA (?)
     implementation "ch.acra:acra-core:5.7.0"
