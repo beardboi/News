@@ -117,7 +117,6 @@ public class News {
         this.description = description;
 
         // Validation for the content
-        Validation.notNull(content, "content");
         this.content = content;
 
         // Validation for the date of the new
