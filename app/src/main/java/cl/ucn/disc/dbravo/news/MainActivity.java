@@ -21,17 +21,18 @@ package cl.ucn.disc.dbravo.news;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.adapters.ModelAdapter;
-
 import java.util.List;
-
 import cl.ucn.disc.dbravo.news.domain.News;
 import cl.ucn.disc.dbravo.news.domain.NewsItem;
 import cl.ucn.disc.dbravo.news.services.System;
@@ -62,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
         FastAdapter<NewsItem> fastAdapter = FastAdapter.with(newsAdapter);
         fastAdapter.withSelectable(false);
 
+        // The Switch button of day/night mode
+        //SwitchCompat switchBtn = findViewById(R.id.layout_sw_daynight);
+
         // The Recycler View
         RecyclerView recyclerView = findViewById(R.id.am_rv_news);
         recyclerView.setAdapter(fastAdapter);
@@ -83,5 +87,32 @@ public class MainActivity extends AppCompatActivity {
                 newsAdapter.add(newsList);
             });
         });
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate menu
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+
+        final MenuItem switchBtn = menu.findItem(R.id.mm_sw_daynight);
+        final SwitchCompat actionView = (SwitchCompat) switchBtn.getActionView();
+
+        // Setting the listener
+        actionView.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(isChecked) {
+                Toast.makeText(getApplicationContext(), "SWITCH ON", Toast.LENGTH_LONG).show();
+
+                // Set night mode
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            } else {
+                Toast.makeText(getApplicationContext(), "SWITCH OFF", Toast.LENGTH_LONG).show();
+
+                // Set day mode
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
     }
 }
