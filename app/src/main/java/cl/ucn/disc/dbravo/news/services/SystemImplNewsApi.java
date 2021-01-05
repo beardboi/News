@@ -129,16 +129,15 @@ public class SystemImplNewsApi implements System {
     }
 
     /**
-     * The predicator of filter function.
+     * The predicate of filter function.
      *
-     * @param keyExtractor The key extractor.
+     * @param idExtractor The key extractor.
      * @param <T> The type of input of the predicate.
      * @return The filter by key extractor.
      */
-    @RequiresApi(api = Build.VERSION_CODES.N) // Fixme: Fix this line!
-    private static <T> Predicate<T> distintByKey(Function<? super T, ?> keyExtractor) {
+    private static <T> Predicate<T> distinctByKey(Function<? super T, ?> idExtractor) {
         Map<Object, Boolean> seen = new ConcurrentHashMap<>();
-        return t -> seen.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE);
+        return t -> seen.putIfAbsent(idExtractor.apply(t), Boolean.TRUE) == null;
     }
 
     /**
@@ -147,7 +146,6 @@ public class SystemImplNewsApi implements System {
      * @param size The size of the list.
      * @return The list that contains the news.
      */
-    @RequiresApi(api = Build.VERSION_CODES.N) // Fixme: Fix this line!
     @Override
     public List<News> retrieveNews(Integer size) {
         try {
@@ -164,10 +162,12 @@ public class SystemImplNewsApi implements System {
             // Return the news filtered and sorted by data
             return rarNews.stream()
                     // Remove the duplicated ones
-                    .filter(distintByKey(News::getId))
+                    .filter(distinctByKey(News::getId))
+
                     // Order by date
                     .sorted((k1, k2) -> k2.getPublishedAt().compareTo(k1.getPublishedAt()))
                     .collect(Collectors.toList());
+
 
         } catch (IOException ex) {
             // TODO: Encapsulate?
