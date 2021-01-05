@@ -23,41 +23,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <!-- AppBarLayout -->
-    <com.google.android.material.appbar.AppBarLayout
+    <!-- AppBarlayout -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <!-- Toolbar -->
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/am_t_toolbar"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:elevation="4dp"
-            android:minHeight="?attr/actionBarSize"
-            app:contentInsetEnd="8dp"
-            app:contentInsetStart="8dp"
-            app:navigationIcon="@drawable/ic_launcher_foreground"
-            app:subtitle="@string/app_name"
-            app:title="@string/app_name"
-            tools:targetApi="lollipop" />
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primaryColor"
+            android:theme="@style/Theme.News">
 
-    </com.google.android.material.appbar.AppBarLayout>
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/am_t_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="67dp"
+                android:elevation="0dp"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="@style/Theme.News"
+                app:contentInsetStart="0dp"
+                app:contentInsetStartWithNavigation="0dp"
+                app:navigationIcon="@drawable/ic_launcher_foreground"
+                app:subtitle="@string/subtitle"
+                app:subtitleTextColor="@color/cultured"
+                app:title="@string/title"
+                app:titleTextColor="@color/blue_0" />
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+    </LinearLayout>
 
     <!-- SwipeRefreshLayout -->
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/am_swl_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/backgroundColor">
 
         <!-- RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/am_rv_news"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical">
+            android:background="@color/backgroundColor"
+            android:scrollbars="vertical"
+            android:theme="@style/Theme.News">
 
         </androidx.recyclerview.widget.RecyclerView>
 
