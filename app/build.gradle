@@ -93,9 +93,6 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
-// ACRA (?)
-    implementation "ch.acra:acra-core:5.7.0"
-    implementation "ch.acra:acra-dialog:5.7.0"
-    implementation "ch.acra:acra-notification:5.7.0"
-    implementation "ch.acra:acra-toast:5.7.0"
+    // Fresco library
+    implementation 'com.facebook.fresco:fresco:2.3.0'
 }
