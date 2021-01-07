@@ -30,13 +30,15 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.adapters.ModelAdapter;
 import java.util.List;
 import cl.ucn.disc.dbravo.news.domain.News;
-import cl.ucn.disc.dbravo.news.domain.NewsItem;
+import cl.ucn.disc.dbravo.news.adapter.NewsItem;
 import cl.ucn.disc.dbravo.news.services.System;
 import cl.ucn.disc.dbravo.news.services.SystemImplNewsApi;
+import cl.ucn.disc.dbravo.news.api.ApiKey;
 
 /**
  * The main activity class.
@@ -63,9 +65,6 @@ public class MainActivity extends AppCompatActivity {
         FastAdapter<NewsItem> fastAdapter = FastAdapter.with(newsAdapter);
         fastAdapter.withSelectable(false);
 
-        // The Switch button of day/night mode
-        //SwitchCompat switchBtn = findViewById(R.id.layout_sw_daynight);
-
         // The Recycler View
         RecyclerView recyclerView = findViewById(R.id.am_rv_news);
         recyclerView.setAdapter(fastAdapter);
@@ -73,14 +72,29 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(new DividerItemDecoration(this,
                 DividerItemDecoration.VERTICAL));
 
+        // The SwipeRefreshLayout
+        SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.am_swl_refresh);
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+
+            // Call to the API
+            List<News> newsList = getNewsList();
+
+            // Add the news to the adapter
+            newsAdapter.add(newsList);
+
+            // Show new data
+            fastAdapter.notifyAdapterDataSetChanged();
+
+            // Stop refreshing
+            swipeRefreshLayout.setRefreshing(false);
+
+        });
+
         // Get the news in the background thread
         AsyncTask.execute(() -> {
 
-            // Using the contracts
-            System system = new SystemImplNewsApi("dcc476490d624a60a76f2ab30ec11e47");
-
             // Get the news
-            List<News> newsList = system.retrieveNews(30);
+            List<News> newsList = getNewsList();
 
             // Set the adapter
             runOnUiThread(() -> {
@@ -90,29 +104,57 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * The onCreateOptionsMenu method override.
+     *
+     * @param menu The menu that will be added to the toolbar.
+     * @return true if the menu is displayed; if you return false it will not be shown.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate menu
         getMenuInflater().inflate(R.menu.main_menu, menu);
 
+        // The menu item
         final MenuItem switchBtn = menu.findItem(R.id.mm_sw_daynight);
         final SwitchCompat actionView = (SwitchCompat) switchBtn.getActionView();
 
         // Setting the listener
         actionView.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if(isChecked) {
-                Toast.makeText(getApplicationContext(), "SWITCH ON", Toast.LENGTH_LONG).show();
+            if (isChecked) {
 
-                // Set night mode
+                // Set the night mode
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            } else {
-                Toast.makeText(getApplicationContext(), "SWITCH OFF", Toast.LENGTH_LONG).show();
 
-                // Set day mode
+                // Show message
+                Toast.makeText(getApplicationContext(), "Dark mode enabled", Toast.LENGTH_LONG).show();
+
+                // TODO: Apply the change
+
+
+            } else {
+                // Change the switch state
+                switchBtn.setChecked(false);
+
+                // Set the day mode
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+                // Show message
+                Toast.makeText(getApplicationContext(), "Dark mode disabled", Toast.LENGTH_LONG).show();
+
+                // TODO: Apply the change
             }
         });
 
         return super.onCreateOptionsMenu(menu);
+    }
+
+    // Method to load the news from the API
+    public static List<News> getNewsList() {
+        // Instance the class to make the call to the API
+        System system = new SystemImplNewsApi(ApiKey.getApiKey());
+
+        // Call to the API and return the list of news
+        return system.retrieveNews(30);
     }
 }
