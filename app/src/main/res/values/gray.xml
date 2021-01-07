@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2020 Diego Bravo B, diego.bravo@alumnos.ucn.cl
+  ~                Daniel Suares, daniel.suares@alumnos.ucn.cl
+  ~                Raul Ramos, raul.ramos@alumnos.ucn.cl
+  ~
+  ~  Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+  ~  and associated documentation files (the "Software"), to deal in the Software without
+  ~  restriction, including without limitation the rights to use, copy, modify, merge, publish,
+  ~  distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+  ~  Software is furnished to do so, subject to the following conditions:
+  ~
+  ~  The above copyright notice and this permission notice shall be included in all copies or
+  ~  substantial portions of the Software.
+  ~
+  ~  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+  ~  BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+  ~  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+  ~  DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. -->
+
+<resources>
+    <!-- Gray color -->
+    <color name="cod_gray_900">#121212</color>
+    <color name="cod_gray_800">#181818</color>
+    <color name="cod_gray_700">#1D1D1D</color>
+    <color name="cod_gray_600">#282828</color>
+    <color name="emperor">#515151</color>
+    <color name="dove_gray_900">#656565</color>
+    <color name="dove_gray_800">#6F6F6F</color>
+    <color name="boulder">#797979</color>
+    <color name="dusty_gray">#949494</color>
+    <color name="silver_chalice">#AFAFAF</color>
+    <color name="silver_900">#BDBDBD</color>
+    <color name="silver_800">#CACACA</color>
+
+</resources>
