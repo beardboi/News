@@ -23,11 +23,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <!-- AppBarlayout -->
+    <!-- App Bar layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -50,9 +49,9 @@
                 app:contentInsetStartWithNavigation="0dp"
                 app:navigationIcon="@drawable/ic_launcher_foreground"
                 app:subtitle="@string/subtitle"
-                app:subtitleTextColor="@color/cultured"
+                app:subtitleTextColor="@color/dusty_gray"
                 app:title="@string/title"
-                app:titleTextColor="@color/blue_0" />
+                app:titleTextColor="@color/silver_800" />
 
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -71,13 +70,12 @@
             android:id="@+id/am_rv_news"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/backgroundColor"
             android:scrollbars="vertical"
-            android:theme="@style/Theme.News">
+            android:theme="@style/Theme.News"
+            >
 
         </androidx.recyclerview.widget.RecyclerView>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </LinearLayout>
-
