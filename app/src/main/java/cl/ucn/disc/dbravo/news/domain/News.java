@@ -48,8 +48,7 @@ public class News {
     private String author;
 
     /**
-     * The source of the new
-     *
+     * The source of the ne
      */
     private String source;
 
@@ -160,24 +159,10 @@ public class News {
     }
 
     /**
-     * Set for the id attribute.
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
      * @return The title.
      */
     public String getTitle() {
         return title;
-    }
-
-    /**
-     * Set for the title attribute.
-     */
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     /**
@@ -202,24 +187,10 @@ public class News {
     }
 
     /**
-     * Set for the description attribute.
-     */
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    /**
      * @return The content.
      */
     public String getContent() {
         return content;
-    }
-
-    /**
-     * Set for the content attribute.
-     */
-    public void setContent(String content) {
-        this.content = content;
     }
 
     /**
@@ -230,24 +201,10 @@ public class News {
     }
 
     /**
-     * Set for the url attribute.
-     */
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    /**
      * @return The urlImg.
      */
     public String getUrlImg() {
         return urlImg;
-    }
-
-    /**
-     * Set for the urlImg attribute.
-     */
-    public void setUrlImg(String urlImg) {
-        this.urlImg = urlImg;
     }
 
     /**
@@ -258,23 +215,10 @@ public class News {
     }
 
     /**
-     * Set for the publishedAt attribute.
-     */
-    public void setPublishedAt(ZonedDateTime publishedAt) {
-        this.publishedAt = publishedAt;
-    }
-
-    /**
      * @return The source
      */
     public String getSource() {
         return source;
     }
 
-    /**
-     * Set for the source attribute.
-     */
-    public void setSource(String source) {
-        this.source = source;
-    }
 }
