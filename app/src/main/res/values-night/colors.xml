@@ -19,28 +19,28 @@
 
 <resources>
     <!-- General -->
-    <color name="primaryColor">@color/blue_400</color>
-    <color name="secondaryColor">@color/blue_500</color>
-    <color name="tertiaryColor">@color/blue_600</color>
-    <color name="backgroundColor">@color/eerie_black</color>
-    <color name="colorAccent">@color/rich_black</color>
+    <color name="primaryColor">@color/cod_gray_700</color>
+    <color name="secondaryColor">@color/solid_pink</color>
+    <color name="tertiaryColor">@color/dark_sienna_400</color>
+    <color name="backgroundColor">@color/cod_gray_900</color>
+    <color name="colorAccent">@color/cod_gray_700</color>
 
     <!-- Text -->
-    <color name="textColorPrimary">@color/cultured</color>
-    <color name="textColorSecondary">@color/gainsboro</color>
-    <color name="textColorTertiary">@color/silver</color>
+    <color name="textColorPrimary">@color/silver_900</color>
+    <color name="textColorSecondary">@color/silver_800</color>
+    <color name="textColorTertiary">@color/silver_chalice</color>
 
     <!-- Default -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
     <!-- Toolbar -->
-    <color name="statusBarColor">@color/eerie_black</color>
-    <color name="toolbarBackground">@color/rich_black</color>
-    <color name="windowBackground">@color/rich_black</color>
-    <color name="dividerColor">@color/silver</color>
-    <color name="navigationBarColor">@color/onyx</color>
-    <color name="toolbarTitleColor">@color/gainsboro</color>
-    <color name="toolbarSubtitleTextColor">@color/cultured</color>
+    <color name="statusBarColor">@color/cod_gray_600</color>
+    <color name="toolbarBackground">@color/cod_gray_700</color>
+    <color name="windowBackground">@color/cod_gray_800</color>
+    <color name="dividerColor">@color/dove_gray_800</color>
+    <color name="navigationBarColor">@color/cod_gray_600</color>
+    <color name="toolbarTitleColor">@color/dove_gray_800</color>
+    <color name="toolbarSubtitleTextColor">@color/dove_gray_900</color>
 
 </resources>
