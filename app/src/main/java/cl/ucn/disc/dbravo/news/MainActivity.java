@@ -47,6 +47,9 @@ import cl.ucn.disc.dbravo.news.api.ApiKey;
  */
 public class MainActivity extends AppCompatActivity {
 
+    // The SwipeRefreshLayout
+    private SwipeRefreshLayout swipeRefreshLayout;
+
     /**
      * OnCreate.
      *
@@ -73,22 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 DividerItemDecoration.VERTICAL));
 
         // The SwipeRefreshLayout
-        SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.am_swl_refresh);
-        swipeRefreshLayout.setOnRefreshListener(() -> {
-
-            // Call to the API
-            List<News> newsList = getNewsList();
-
-            // Add the news to the adapter
-            newsAdapter.add(newsList);
-
-            // Show new data
-            fastAdapter.notifyAdapterDataSetChanged();
-
-            // Stop refreshing
-            swipeRefreshLayout.setRefreshing(false);
-
-        });
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.am_swl_refresh);
 
         // Get the news in the background thread
         AsyncTask.execute(() -> {
@@ -102,6 +90,29 @@ public class MainActivity extends AppCompatActivity {
             });
         });
 
+        // The listener of the SwipeRefresh
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+
+            // Get the news in the background thread
+            AsyncTask.execute(() -> {
+
+                // Get the news from the API
+                List<News> newsList = getNewsList();
+
+                // Draw the news
+                runOnUiThread(() -> {
+                    // Add the news to the adapter
+                    newsAdapter.add(newsList);
+
+                    // Show new data
+                    fastAdapter.notifyAdapterDataSetChanged();
+
+                    // Stop refreshing
+                    swipeRefreshLayout.setRefreshing(false);
+
+                });
+            });
+        });
     }
 
     /**
@@ -130,7 +141,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Dark mode enabled", Toast.LENGTH_LONG).show();
 
                 // TODO: Apply the change
-
 
             } else {
                 // Change the switch state
