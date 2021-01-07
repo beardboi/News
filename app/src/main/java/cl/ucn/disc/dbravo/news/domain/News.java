@@ -28,18 +28,18 @@ import cl.ucn.disc.dbravo.news.utils.Validation;
  *
  * @author Diego Bravo B
  */
-public class News {
+public final class News {
 
     /**
      * Unique id
      */
-    private Long id;
+     private final Long id;
 
     /**
      * The new's title
      * Restrictions: not null, size > 2
      */
-    private String title;
+    private final String title;
 
     /**
      * The author of the new
@@ -50,37 +50,37 @@ public class News {
     /**
      * The source of the ne
      */
-    private String source;
+    private final String source;
 
     /**
      * The description of the new
      * Restrictions: Not null, size > 2
      */
-    private String description;
+    private final String description;
 
     /**
      * The content of the new
      * Restrictions: Not null, size > 2
      */
-    private String content;
+    private final String content;
 
     /**
      * The url of the new
      * Restrictions: Not null, size > 2
      */
-    private String url;
+    private final String url;
 
     /**
      * The url of the image
      * Restrictions: Not null
      */
-    private String urlImg;
+    private final String urlImg;
 
     /**
      * The date of publish
      * Restrictions: Not null
      */
-    private ZonedDateTime publishedAt;
+    private final ZonedDateTime publishedAt;
 
     /**
      * The constructor.
