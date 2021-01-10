@@ -16,6 +16,9 @@
 </head>
 
 <body>
+
+<div class="container-fluid">
+
     <div class="card col-lg-4 mx-auto">
         <!-- Card header -->
         <div class="card-header text-center font-weight-bold">
@@ -25,64 +28,54 @@
         <div class="card-body">
 
             <!-- The Form, Action => NewsController@store TODO: Write validations !! -->
-            <form name="add-news-form" id="news-form" method="post" action="{{url('store-form')}}">
-            @csrf
+            {{ Form::open(['route' => 'news.store']) }}
 
-            <!-- Fill the form -->
-                <div class="form-group">
-                    <label for="title" class="">
-                        Title
-                    </label>
-                    <input type="text" id="title" name="title" class="form-control" required="required">
-                </div>
+            <div class="form-group">
+                {{ Form::label('Title') }}
+                {{ Form::text('title', null, ['class' => 'form-control', 'required']) }}
+            </div>
 
-                <div class="form-group">
-                    <label for="author">
-                        Author
-                    </label>
-                    <input type="text" id="author" name="author" class="form-control" required="required">
-                </div>
+            <div class="form-group">
+                {{ Form::label('Author') }}
+                {{ Form::text('author', null, ['class' => 'form-control', 'required']) }}
+            </div>
 
-                <div class="form-group">
-                    <label for="source">
-                        Source
-                    </label>
-                    <input type="text" id="source" name="source" class="form-control" required="required">
-                </div>
+            <div class="form-group">
+                {{ Form::label('Source') }}
+                {{ Form::text('source', null, ['class' => 'form-control', 'required']) }}
+            </div>
 
-                <div class="form-group">
-                    <label for="url">
-                        URL
-                    </label>
-                    <input type="text" id="url" name="url" class="form-control" required="required">
-                </div>
+            <div class="form-group">
+                {{ Form::label('URL') }}
+                {{ Form::text('url', null, ['class' => 'form-control', 'required']) }}
+            </div>
 
-                <div class="form-group">
-                    <label for="url-image">
-                        URL Image
-                    </label>
-                    <input type="text" id="url-image" name="url-image" class="form-control" required="required">
-                </div>
+            <div class="form-group">
+                {{ Form::label('URL Image') }}
+                {{ Form::text('url_image', null, ['class' => 'form-control', 'required']) }}
+            </div>
 
-                <div class="form-group">
-                    <label for="description">
-                        Description
-                    </label>
-                    <textarea id="description" name="description" class="form-control" required="required"></textarea>
-                </div>
+            <div class="form-group">
+                {{ Form::label('Description') }}
+                {{ Form::textarea('description', null, ['class' => 'form-control', 'required', 'rows' => '3', 'style' => 'resize: none']) }}
+            </div>
 
-                <div class="form-group">
-                    <label for="content">
-                        Content
-                    </label>
-                    <textarea id="content" name="content" class="form-control" required="required"></textarea>
-                </div>
+            <div class="form-group">
+                {{ Form::label('Content') }}
+                {{ Form::textarea('content', null, ['class' => 'form-control', 'required', 'rows' => '5', 'style' => 'resize: none']) }}
+            </div>
 
-                <button type="submit" class="btn btn-dark float-right">Submit</button>
-            </form>
+            <div class="form-group">
+                <!-- Button to submit the form -->
+                {{ Form::submit('Submit', ['class' => 'btn btn-primary float-right']) }}
+            </div>
+
+            {{ Form::close() }}
 
         </div>
     </div>
+</div>
+
 </body>
 
 </html>
