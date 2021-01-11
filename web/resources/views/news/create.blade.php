@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,19 +16,21 @@
 </head>
 
 <body>
-
 <div class="container-fluid">
-
     <div class="card col-lg-4 mx-auto">
         <!-- Card header -->
         <div class="card-header text-center font-weight-bold">
             The News Project - News form
         </div>
+
+        <!-- TODO: display the errors -->
+
         <!-- Card body -->
         <div class="card-body">
 
             <!-- The Form, Action => NewsController@store TODO: Write validations !! -->
-            {{ Form::open(['route' => 'news.store']) }}
+            {{ Form::open(['route' => 'news.store', 'method' => 'POST']) }}
+            {{ Form::token() }}
 
             <div class="form-group">
                 {{ Form::label('Title') }}
@@ -71,7 +73,6 @@
             </div>
 
             {{ Form::close() }}
-
         </div>
     </div>
 </div>
@@ -79,3 +80,5 @@
 </body>
 
 </html>
+
+
