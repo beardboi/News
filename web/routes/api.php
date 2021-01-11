@@ -42,8 +42,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Show all the resources from News
 Route::resource('news', NewsController::class);
 
-// Create a resource
-Route::post('news/create', [NewsController::class, 'create']);
+// Create a News
+Route::get('news/create', [NewsController::class, 'create'])->name('news.create');
 
-// Store a resource
+// Store a News
 Route::post('news/store', [NewsController::class, 'store'])->name('news.store');
