@@ -14,21 +14,24 @@
  * substantial portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED INCLUDING
- *  BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- *  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
- *  DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
 namespace App\Http\Controllers\News;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use App\Models\News;
+use Illuminate\Validation\ValidationException;
 
 /**
  * The Controller of the News model.
@@ -49,8 +52,8 @@ class NewsController extends Controller
 
         // Return the GET request with code 200 (By default is 200)
         return response([
-           'message' => 'Retrieve Successfully',
-           'news' => $news
+            'message' => 'Retrieve Successfully',
+            'news' => $news
         ]);
     }
 
@@ -69,13 +72,56 @@ class NewsController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return Response
+     * @return RedirectResponse
+     * @throws ValidationException
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        // TODO: Write validations
+        // The validation rules
+        $rules = [
+            'title' => 'string | required | max:255',
+            'author' => 'string | required | max:255',
+            'source' => 'string | required | max:255',
+            'url' => 'string | required | min:3',
+            'url_image' => 'string | required | min:3',
+            'description' => 'string | required',
+            'content' => 'string | required'
+        ];
 
-        // TODO: Insert News into the Database
+        // The error messages
+        $messages = [
+            'title.required' => 'The field title must be filled',
+            'author.required' => 'The field author must be filled',
+            'source.required' => 'The field source must be filled',
+            'url.required' => 'The field url must be filled',
+            'url_image.required' => 'The field url image must be filled',
+            'description.required' => 'The field description must be filled',
+            'content.required' => 'The field content must be filled',
+        ];
+
+        // Validate
+        $this->validate($request, $rules, $messages);
+
+        // After the validation, create a new instances of News
+        $news = new News();
+
+        // The date
+        $published_at = Carbon::now();
+
+        // Fill with the request attributes and then insert it into the database
+        $news->fill([
+            'title' => $request['title'],
+            'author' => $request['author'],
+            'source' => $request['source'],
+            'url' => $request['url'],
+            'url_image' => $request['url_image'],
+            'description' => $request['description'],
+            'content' => $request['content'],
+            'published_at' => $published_at
+        ]);
+
+        $news->save();
+
     }
 
     /**
