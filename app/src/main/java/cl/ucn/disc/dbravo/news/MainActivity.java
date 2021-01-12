@@ -79,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.am_swl_refresh);
 
         // Get the news in the background thread
-        //prueba
         AsyncTask.execute(() -> {
 
             // Get the news
@@ -168,4 +167,5 @@ public class MainActivity extends AppCompatActivity {
         // Call to the API and return the list of news
         return system.retrieveNews(30);
     }
+
 }

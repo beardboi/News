@@ -95,4 +95,11 @@ dependencies {
 
     // Fresco library
     implementation 'com.facebook.fresco:fresco:2.3.0'
+
+    //ROOM Database
+    def room_version = "2.2.5"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
 }
