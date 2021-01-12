@@ -20,6 +20,9 @@
 package cl.ucn.disc.dbravo.news;
 
 import android.os.AsyncTask;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -168,4 +171,23 @@ public class MainActivity extends AppCompatActivity {
         return system.retrieveNews(30);
     }
 
+    /**
+     * Method to check internet connection
+     *
+     * @param MainActivity
+     * @return Boolean value indicating the status of the connection
+     */
+    private boolean internetConnection(MainActivity main){
+
+        ConnectivityManager Connection = main.getSystemService(Context.CONNECTIVITY_SERVICE);
+        //Check wifi connection
+        NetworkInfo wifiValidation = Connection.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        //Check internet mobile connection
+        NetworkInfo mobileValidation = Connection.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        //Check internet connection
+        if (wifiValidation != null && wifiValidation.isConnected() || dateValidation != null && mobileValidation.isConnected()){
+            return true;
+        }
+        return false;
+    }
 }
