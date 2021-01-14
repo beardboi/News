@@ -36,7 +36,7 @@ use Illuminate\Validation\ValidationException;
 /**
  * The Controller of the News model.
  * @package App\Http\Controllers\News
- * @author Diego Bravo Bascuñan
+ * @author Diego Bravo Bascuñan, Daniel Suares
  */
 class NewsController extends Controller
 {
@@ -47,8 +47,8 @@ class NewsController extends Controller
      */
     public function index()
     {
-        // SELECT * From News
-        $news = News::all();
+        // Get the News order by the published_At and then paginate
+        $news = News::orderBy('published_at', 'DESC')->paginate(10);
 
         // Return the GET request with code 200 (By default is 200)
         return response([
@@ -122,6 +122,8 @@ class NewsController extends Controller
 
         $news->save();
 
+        // Redirect to the form again
+        return redirect('news/create');
     }
 
     /**
