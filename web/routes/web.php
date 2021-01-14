@@ -20,6 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+use App\Http\Controllers\News\NewsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -44,3 +45,9 @@ Auth::routes();
 
 // Home route
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Create a News
+Route::get('news/create', [NewsController::class, 'create'])->name('news.create');
+
+// Store a News
+Route::post('news/store', [NewsController::class, 'store'])->name('news.store');
