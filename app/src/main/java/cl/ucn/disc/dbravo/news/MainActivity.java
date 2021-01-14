@@ -20,6 +20,9 @@
 package cl.ucn.disc.dbravo.news;
 
 import android.os.AsyncTask;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -101,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // Draw the news
                 runOnUiThread(() -> {
+
                     // Add the news to the adapter
                     newsAdapter.add(newsList);
 
@@ -123,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         // Inflate menu
         getMenuInflater().inflate(R.menu.main_menu, menu);
 
@@ -143,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
                 // TODO: Apply the change
 
             } else {
+
                 // Change the switch state
                 switchBtn.setChecked(false);
 
@@ -161,10 +167,35 @@ public class MainActivity extends AppCompatActivity {
 
     // Method to load the news from the API
     public static List<News> getNewsList() {
+
         // Instance the class to make the call to the API
         System system = new SystemImplNewsApi(ApiKey.getApiKey());
 
         // Call to the API and return the list of news
         return system.retrieveNews(30);
+    }
+
+    /**
+     * Method to check internet connection
+     *
+     * @param MainActivity
+     * @return Boolean value indicating the status of the connection
+     */
+    private boolean internetConnection(MainActivity main){
+
+        ConnectivityManager Connection = main.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        //Check wifi connection
+        NetworkInfo wifiValidation = Connection.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+
+        //Check internet mobile connection
+        NetworkInfo mobileValidation = Connection.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+        //Check internet connection
+        if (wifiValidation != null && wifiValidation.isConnected() || dateValidation != null && mobileValidation.isConnected()){
+            return true;
+        }
+
+        return false;
     }
 }
