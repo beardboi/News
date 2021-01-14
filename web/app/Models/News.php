@@ -29,6 +29,10 @@ class News extends Model
 {
     use HasFactory;
 
+    // Set the timestamp to null
+    public const CREATED_AT = null;
+    public const UPDATED_AT = null;
+
     /**
      * The database connection that should be used by the model.
      *
@@ -48,7 +52,7 @@ class News extends Model
         'url_image',
         'description',
         'content',
-        'published_at',
+        'published_at'
     ];
 
 }
