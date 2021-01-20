@@ -14,6 +14,7 @@ import cl.ucn.disc.dbravo.news.domain.News;
  */
 @Dao
 public interface CacheDao {
+
     //Select all news
     @Query("SELECT * FROM News")
     List<News> getAll();

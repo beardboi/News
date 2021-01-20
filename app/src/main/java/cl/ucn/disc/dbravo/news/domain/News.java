@@ -32,7 +32,7 @@ import androidx.room.PrimaryKey;
  *
  * @author Diego Bravo B
  */
-@Entity
+@Entity(tableName = "News")
 public final class News {
 
     /**
