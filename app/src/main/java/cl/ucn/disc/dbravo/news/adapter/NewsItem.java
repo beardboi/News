@@ -23,6 +23,8 @@ import android.view.View;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import android.net.Uri;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.mikepenz.fastadapter.items.ModelAbstractItem;
 import org.threeten.bp.format.DateTimeFormatter;
 import java.util.List;
@@ -93,6 +95,8 @@ public final class NewsItem extends ModelAbstractItem<News, NewsItem, NewsItem.V
         holder.source.setText(getModel().getSource());
         holder.description.setText(getModel().getDescription());
         holder.publishedAt.setText(FORMATTER.format(getModel().getPublishedAt()));
+        holder.image.setImageURI(getModel().getUrlImg());
+
     }
 
     /**
@@ -110,6 +114,7 @@ public final class NewsItem extends ModelAbstractItem<News, NewsItem, NewsItem.V
         holder.source.setText(null);
         holder.description.setText(null);
         holder.publishedAt.setText(null);
+        holder.image.setImageURI((Uri)null);
     }
 
     /**
@@ -122,6 +127,7 @@ public final class NewsItem extends ModelAbstractItem<News, NewsItem, NewsItem.V
         protected TextView source;
         protected TextView description;
         protected TextView publishedAt;
+        protected SimpleDraweeView image;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -130,6 +136,7 @@ public final class NewsItem extends ModelAbstractItem<News, NewsItem, NewsItem.V
             this.source = itemView.findViewById(R.id.in_tv_source);
             this.description = itemView.findViewById(R.id.in_tv_description);
             this.publishedAt = itemView.findViewById(R.id.in_tv_published_at);
+            this.image = itemView.findViewById(R.id.my_image_view);
         }
     }
 }
