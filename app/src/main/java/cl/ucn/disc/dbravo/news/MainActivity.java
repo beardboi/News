@@ -44,7 +44,7 @@ import cl.ucn.disc.dbravo.news.domain.News;
 import cl.ucn.disc.dbravo.news.adapter.NewsItem;
 import cl.ucn.disc.dbravo.news.services.System;
 import cl.ucn.disc.dbravo.news.services.SystemImplNewsApi;
-import cl.ucn.disc.dbravo.news.api.ApiKey;
+//import cl.ucn.disc.dbravo.news.api.ApiKey;
 
 /**
  * The main activity class.
@@ -52,7 +52,6 @@ import cl.ucn.disc.dbravo.news.api.ApiKey;
  * @author Diego Bravo B.
  */
 public class MainActivity extends AppCompatActivity {
-
     // The SwipeRefreshLayout
     private SwipeRefreshLayout swipeRefreshLayout;
 
@@ -188,9 +187,9 @@ public class MainActivity extends AppCompatActivity {
      * @param MainActivity
      * @return Boolean value indicating the status of the connection
      */
-   /* private boolean internetConnection(MainActivity main){
+    private boolean internetConnection(MainActivity main){
 
-        //ConnectivityManager Connection = main.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager Connection = (ConnectivityManager) main.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         //Check wifi connection
         NetworkInfo wifiValidation = Connection.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
@@ -199,10 +198,10 @@ public class MainActivity extends AppCompatActivity {
         NetworkInfo mobileValidation = Connection.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
 
         //Check internet connection
-        if (wifiValidation != null && wifiValidation.isConnected() || dateValidation != null && mobileValidation.isConnected()){
+        if (wifiValidation != null && wifiValidation.isConnected() ||  mobileValidation != null && mobileValidation.isConnected()){
             return true;
         }
 
         return false;
-    }*/
+    }
 }
