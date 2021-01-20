@@ -19,6 +19,7 @@
 
 package cl.ucn.disc.dbravo.news;
 
+import android.app.Application;
 import android.os.AsyncTask;
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -34,6 +35,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.adapters.ModelAdapter;
 import java.util.List;
@@ -60,7 +63,11 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        //
+        Fresco.initialize(this);
+
         setContentView(R.layout.activity_main);
 
         // The toolbar
@@ -181,9 +188,9 @@ public class MainActivity extends AppCompatActivity {
      * @param MainActivity
      * @return Boolean value indicating the status of the connection
      */
-    private boolean internetConnection(MainActivity main){
+   /* private boolean internetConnection(MainActivity main){
 
-        ConnectivityManager Connection = main.getSystemService(Context.CONNECTIVITY_SERVICE);
+        //ConnectivityManager Connection = main.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         //Check wifi connection
         NetworkInfo wifiValidation = Connection.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
@@ -197,5 +204,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return false;
-    }
+    }*/
 }
