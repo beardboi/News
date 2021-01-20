@@ -23,63 +23,77 @@ import net.openhft.hashing.LongHashFunction;
 import org.threeten.bp.ZonedDateTime;
 import cl.ucn.disc.dbravo.news.utils.Validation;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 /**
  * The domain model: News
  *
  * @author Diego Bravo B
  */
+@Entity
 public final class News {
 
     /**
      * Unique id
      */
+    @PrimaryKey(autoGenerate = false)
      private final Long id;
 
     /**
      * The new's title
      * Restrictions: not null, size > 2
      */
+    @ColumnInfo(name = "title")
     private final String title;
 
     /**
      * The author of the new
      * Restrictions: Not null, size > 2
      */
+    @ColumnInfo(name = "author")
     private String author;
 
     /**
      * The source of the ne
      */
+    @ColumnInfo(name = "source")
     private final String source;
 
     /**
      * The description of the new
      * Restrictions: Not null, size > 2
      */
+    @ColumnInfo(name = " description")
     private final String description;
 
     /**
      * The content of the new
      * Restrictions: Not null, size > 2
      */
+    @ColumnInfo(name = "content")
     private final String content;
 
     /**
      * The url of the new
      * Restrictions: Not null, size > 2
      */
+    @ColumnInfo(name = "url")
     private final String url;
 
     /**
      * The url of the image
      * Restrictions: Not null
      */
+    @ColumnInfo(name = "urlImg")
     private final String urlImg;
 
     /**
      * The date of publish
      * Restrictions: Not null
      */
+    @ColumnInfo(name = "publishedAt")
     private final ZonedDateTime publishedAt;
 
     /**
