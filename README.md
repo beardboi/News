@@ -35,6 +35,23 @@ Finally, you can access to the endpoint in the url:
 https://localhost:8000/api/news
 ```
 
+The parameters that can be use to request the json response are:
+
+1) pageSize: to indicate the number of News showed in the response.
+```bash
+https://localhost:8000/api/news/?pageSize=N
+```
+2) page: to indicate the number of page.
+```bash
+https://localhost:8000/api/news/?pageSize=N
+```
+
+
+## Screenshots
+
+![alt text](https://i.ibb.co/v33ytWD/The-news-app.png)
+![alt text](https://i.ibb.co/3sPF66v/app.png)
+
 ## Status
 
 Currently in development.
