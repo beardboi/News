@@ -60,3 +60,6 @@ Route::get('destroy/{id}', [NewsController::class, 'destroy'])->name('news.destr
 
 // Route watch news
 Route::get('news/watch', [NewsController::class, 'watchNews'])->name('news.watch');
+
+// Route watch json
+Route::get('news/json', [NewsController::class, 'jsonLink'])->name('news.json');
