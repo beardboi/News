@@ -74,7 +74,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        //
+
+        // Initializate fresco
         Fresco.initialize(this);
 
         setContentView(R.layout.activity_main);
