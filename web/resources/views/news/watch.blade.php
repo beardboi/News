@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <h3 align="center">Noticias del Dia</h3>
+        <h3 align="center">Daily News</h3>
         <br />
         <div class="row">
             <div class="col-md-12">
@@ -15,16 +15,16 @@
                                 <table class="table table-bordered table-hover" id="tab_trabajo">
                                     <tr align="center">
                                         <th>
-                                            title
+                                            Title
                                         </th>
                                         <th>
-                                            author
+                                            Author
                                         </th>
                                         <th>
-                                            source
+                                            Source
                                         </th>
                                         <th>
-                                            url
+                                            URL
                                         </th>
                                         <th>
                                             Action
@@ -64,7 +64,7 @@
                             News
                         </div>
                         <div class="card-body">
-                            <h6 align="center"> There is no recorded news </h6>
+                            <h6 align="center"> There is no recorded news. </h6>
                         </div>
                     </div>
                 @endif
