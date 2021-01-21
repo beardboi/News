@@ -1,4 +1,4 @@
-package cl.ucn.disc.dbravo.news.cache;
+package cl.ucn.disc.dbravo.news.database;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
