@@ -47,7 +47,7 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $e) {
         // If the exception is an 'Not Found 404 error'
         if($e instanceof NotFoundHttpException) {
-            // Return a
+            // Return a json response
             return response()->json([
                 'message' => 'data not found',
             ], 404);
