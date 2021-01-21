@@ -51,3 +51,12 @@ Route::get('news/create', [NewsController::class, 'create'])->name('news.create'
 
 // Store a News
 Route::post('news/store', [NewsController::class, 'store'])->name('news.store');
+
+// Create a table News
+Route::get('news/table', [NewsController::class, 'tableNews'])->name('news.table');
+
+// Route destroy news
+Route::get('destroy/{id}', [NewsController::class, 'destroy'])->name('news.destroy');
+
+// Route watch news
+Route::get('news/watch', [NewsController::class, 'watchNews'])->name('news.watch');
