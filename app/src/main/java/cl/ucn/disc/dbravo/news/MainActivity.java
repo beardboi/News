@@ -44,7 +44,7 @@ import cl.ucn.disc.dbravo.news.domain.News;
 import cl.ucn.disc.dbravo.news.adapter.NewsItem;
 import cl.ucn.disc.dbravo.news.services.System;
 import cl.ucn.disc.dbravo.news.services.SystemImplNewsApi;
-//import cl.ucn.disc.dbravo.news.api.ApiKey;
+import cl.ucn.disc.dbravo.news.api.ApiKey;
 
 /**
  * The main activity class.
