@@ -48,13 +48,10 @@ class NewsController extends Controller
     public function index()
     {
         // Get the News order by the published_At and then paginate
-        $news = News::orderBy('published_at', 'DESC')->paginate(10);
+        $news = News::all();
 
         // Return the GET request with code 200 (By default is 200)
-        return response([
-            'message' => 'Retrieve Successfully',
-            'news' => $news
-        ]);
+        return response()->json($news,200);
     }
 
     /**
@@ -181,6 +178,7 @@ class NewsController extends Controller
         return back();
     }
 
+
     public function tableNews()
     {
 
@@ -199,6 +197,77 @@ class NewsController extends Controller
 
 
         return view('news.watch')->with('news',$news);
+    }
+
+    public function search($content)
+    {
+
+        $news = News::where('title','like',"%{$content}%")->get();
+        return response()->json(['title' => $news]);
+
+    }
+
+
+    public function newsResource(Request $request)
+    {
+        // Default value for pagSize
+        $defaultPageSize = 20;
+
+        // Min and max for pageSize
+        $minPageSize = 1;
+        $maxPageSize = 100;
+
+        // By default the keyword is null
+        $defaultQ = null;
+
+        // The columns attributes for the keyword 'q'
+        $columns = ['title', 'author', 'source', 'content', 'description'];
+
+        // Get the url
+        $url = url()->full();
+
+        // The tags that can be added to the API request
+        $pageSize = $request->input('pageSize', $defaultPageSize);
+        $page = $request->input('page', 1);
+        $q = $request->input('q', $defaultQ);
+
+        /*
+         * The pagSize cannot be minor than 20 or bigger than 100, so in that 2 cases
+         * the response has to be an error along with is code. The other case is that
+         * the pagSize pass by parameter is not a number, so in that case its the same.
+         */
+        if (is_numeric($pageSize))
+        {
+            // pagSize cant be a negative number
+            // TODO: Fix this mess
+            if($pageSize < $minPageSize)
+            {
+                return response([
+                    'error' => 404,
+                    'message' => 'data not found'
+                ]);
+            }
+            elseif ($pageSize > $maxPageSize)
+            {
+                return response([
+                    'error' => 404,
+                    'message' => 'data not found'
+                ]);
+            }
+        } else
+        {
+            return response([
+                'error' => 404,
+                'message' => 'data not found'
+            ]);
+        }
+
+        // If the request doesnt contain a keyword..
+        if ($q == $defaultQ)
+        {
+            return News::orderBy('published_at', 'DESC')->simplePaginate($pageSize);
+        }
+
     }
 
 }
