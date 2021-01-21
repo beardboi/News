@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="form-group">
-                   h {{ Form::label('URL') }}
+                    {{ Form::label('URL') }}
                     {{ Form::text('url', null, ['class' => 'form-control', 'required', 'placeholder' => 'Enter the url of the News']) }}
                 </div>
 
