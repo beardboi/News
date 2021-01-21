@@ -1,8 +1,7 @@
-<?php
 /*
  * Copyright 2020 Diego Bravo, diego.bravo@alumnos.ucn.cl
- *                             Daniel Suares, daniel.suares@alumnos.ucn.cl
- *                             Raul Ramos, raul.ramos@alumnos.ucn.cl
+ *                Daniel Suares, daniel.suares@alumnos.ucn.cl
+ *                Raul Ramos, raul.ramos@alumnos.ucn.cl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
  * and associated documentation files (the "Software"), to deal in the Software without
@@ -20,42 +19,31 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-namespace App\Http\Controllers;
+package cl.ucn.disc.dbravo.news.database;
 
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.Query;
+import java.util.List;
+import cl.ucn.disc.dbravo.news.domain.News;
 
 /**
- * Class UserController
- * @package App\Http\Controllers
- * @author Diego Bravo
+ * The interface of the class AppStorage.
+ *
+ * @author Raul Ramos, Diego Bravo, Daniel Suares
  */
-class UserController extends Controller
-{
-    function index(Request $request)
-    {
-        // Search the user
-        $user = User::where('email', $request->email)->first();
+@Dao
+public interface AppStorageI {
 
-        // If the password is not the correct one
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            // Return
-            return response([
-                'message' => ['These credentials do not match our records.']
-            ], 404);
-        }
+    //Select all news
+    @Query("SELECT * FROM News")
+    List<News> getAll();
 
-        // Create the token
-        $token = $user->createToken('my-app-token')->plainTextToken;
+    //Select News by id
+    @Query("SELECT * FROM News WHERE id =:id")
+    News findById(long id);
 
-        // Create the response
-        $response = [
-            'user' => $user,
-            'token' => $token
-        ];
-
-        // Return response with status code 201
-        return response($response, 201);
-    }
+    //Insert News in database
+    @Insert
+    void insert(News news);
 }

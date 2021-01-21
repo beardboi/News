@@ -30,7 +30,8 @@
         android:id="@+id/my_image_view"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        fresco:placeholderImage="@drawable/not_found_image" />
+        fresco:placeholderImage="@drawable/ic_broken_image"
+        fresco:failureImage="@drawable/ic_broken_image"/>
 
     <LinearLayout
         android:layout_width="match_parent"
