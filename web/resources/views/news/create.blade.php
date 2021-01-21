@@ -1,21 +1,18 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>News Form</title>
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" type="text/css" rel="stylesheet">
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-</head>
-
-<body>
+@extends('layouts.app')
+@section('content')
+    @if(session('info'))
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <div class="alert alert-success">
+                        {{ session('info') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 <div class="container-fluid">
     <div class="card col-lg-4 mx-auto">
         <!-- Card header -->
@@ -77,8 +74,7 @@
     </div>
 </div>
 
-</body>
-
+@endsection
 </html>
 
 
