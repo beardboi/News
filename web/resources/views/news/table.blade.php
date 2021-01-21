@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <h3 align="center">Plataforma de noticias</h3>
+        <h3 align="center">The News</h3>
         <br />
         <div class="row">
             <div class="col-md-12">
@@ -15,28 +15,28 @@
                                 <table class="table table-bordered table-hover" id="tab_trabajo">
                                     <tr align="center">
                                         <th>
-                                            title
+                                            Title
                                         </th>
                                         <th>
-                                            author
+                                            Author
                                         </th>
                                         <th>
-                                            source
+                                            Source
                                         </th>
                                         <th>
-                                            url
+                                            URL
                                         </th>
                                         <th>
-                                            url_image
+                                            URL image
                                         </th>
                                         <th>
-                                            description
+                                            Description
                                         </th>
                                         <th>
-                                            content
+                                            Content
                                         </th>
                                         <th >
-                                            date
+                                            Date
                                         </th>
                                         <th>
                                             Action
@@ -70,7 +70,7 @@
                                                 {{$new->published_at}}
                                             </td>
                                             <td align="center">
-                                                <a href="{{route('news.destroy', $new->id)}}" onclick="return confirm('Estas seguro que desea eliminar')">
+                                                <a href="{{route('news.destroy', $new->id)}}" onclick="return confirm('Are you sure to delete this News?')">
                                                     <input type="submit" name="upload" class="delete btn btn-danger btn-sm" value="Eliminar" >
                                                 </a>
                                             </td>
@@ -88,7 +88,7 @@
                             News
                         </div>
                         <div class="card-body">
-                            <h6 align="center"> There is no recorded news </h6>
+                            <h6 align="center"> There is no recorded news. </h6>
                         </div>
                     </div>
                 @endif

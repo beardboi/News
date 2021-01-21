@@ -1,11 +1,12 @@
 @extends('layouts.app')
+
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="card border-secondary">
                     <div class="card-header">
-                        NOTICIA A LA HORA
+                        The News
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -21,7 +22,7 @@
                                 </tr>
                                 <tr id='news'>
                                     <td style="vertical-align: middle">
-                                        Titulo
+                                        Title
                                     </td>
                                     <td>
                                         <input name="title" class="form-control" type="text" value="{{ $new->title }}" readonly>
@@ -30,7 +31,7 @@
 
                                 <tr>
                                     <td style="vertical-align: middle">
-                                        Autor
+                                        Author
                                     </td>
                                     <td>
                                         <input name="author" class="form-control" type="text" value="{{ $new->author }}" readonly>
@@ -39,7 +40,7 @@
 
                                 <tr>
                                     <td style="vertical-align: middle">
-                                        Fuente
+                                        Source
                                     </td>
                                     <td>
                                         <input name="source" class="form-control" type="text" value="{{ $new->source }}" readonly>
@@ -47,7 +48,7 @@
                                 </tr>
                                 <tr>
                                     <td style="vertical-align: middle">
-                                        Fecha
+                                        Publish date
                                     </td>
                                     <td>
                                         <input name="date" class="form-control" type="text" value="{{$new->published_at}}" readonly>
@@ -55,7 +56,7 @@
                                 </tr>
                                 <tr>
                                     <td style="vertical-align: middle">
-                                        Descripcion
+                                        Description
                                     </td>
                                     <td>
                                         <input name="description" class="form-control" type="text" value="{{$new->description}}" readonly>
