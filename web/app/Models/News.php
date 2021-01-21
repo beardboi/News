@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
 class News extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     // Set the timestamp to null
     public const CREATED_AT = null;
