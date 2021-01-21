@@ -37,19 +37,22 @@ https://localhost:8000/api/news
 
 The parameters that can be use to request the json response are:
 
-1) pageSize: to indicate the number of News showed in the response.
+1) pageSize: to indicate the N number of News showed in the response.
 ```bash
 https://localhost:8000/api/news/?pageSize=N
 ```
-2) page: to indicate the number of page.
+2) page: to indicate the N number of page.
 ```bash
-https://localhost:8000/api/news/?pageSize=N
+https://localhost:8000/api/news/?page=N
 ```
-
-
+3) q: to indicate a keyword.
+```bash
+https://localhost:8000/api/news/q/{keyword}
+```
 ## Screenshots
 
 ![alt text](https://i.ibb.co/v33ytWD/The-news-app.png)
+
 ![alt text](https://i.ibb.co/3sPF66v/app.png)
 
 ## Status
