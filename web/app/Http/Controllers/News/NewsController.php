@@ -173,41 +173,68 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
+        //Search the news
         $data = News::find($id);
+
+        //Delete the news
         $data->delete();
+
+        //Return page
         return back();
     }
 
-
+    /**
+     * Function that scrolls all the news
+     *
+     * @return Application|Factory|View
+     */
     public function tableNews()
     {
 
+        //Get all the news
         $news = News::all();
 
-
-
+        //return view table
         return view('news.table')->with('news',$news);
 
     }
 
+    /**
+     * Function that returns all the news
+     *
+     * @return Application|Factory|View
+     */
     public function watchNews()
     {
+        //Get all the news
         $news = News::all();
 
-
-
+        //return view
         return view('news.watch')->with('news',$news);
     }
 
+    /**
+     * Search title
+     *
+     * @param $content
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function search($content)
     {
-
+        //title finder
         $news = News::where('title','like',"%{$content}%")->get();
+
+        //return json
         return response()->json(['title' => $news]);
 
     }
 
-
+    /**
+     * Pagination and size
+     *
+     * @param Request $request
+     * @return Application|\Illuminate\Contracts\Routing\ResponseFactory|Response
+     */
     public function newsResource(Request $request)
     {
         // Default value for pagSize
@@ -268,6 +295,11 @@ class NewsController extends Controller
             return News::orderBy('published_at', 'DESC')->simplePaginate($pageSize);
         }
 
+    }
+
+    public function jsonLink()
+    {
+        return view('news.json');
     }
 
 }
