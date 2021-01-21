@@ -123,7 +123,7 @@ class NewsController extends Controller
         $news->save();
 
         // Redirect to the form again
-        return redirect('news/create');
+        return back()->with('info', 'Se registró correctamente');
     }
 
     /**
@@ -134,7 +134,15 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        //
+        $allNews = News::all()->where('id','=',$id);
+
+        $allNews = News::all();
+
+        foreach ($allNews as $news)
+        {
+            $new = $news;
+        }
+        return view('news.show', compact('new'));
     }
 
     /**
@@ -168,6 +176,29 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = News::find($id);
+        $data->delete();
+        return back();
     }
+
+    public function tableNews()
+    {
+
+        $news = News::all();
+
+
+
+        return view('news.table')->with('news',$news);
+
+    }
+
+    public function watchNews()
+    {
+        $news = News::all();
+
+
+
+        return view('news.watch')->with('news',$news);
+    }
+
 }
