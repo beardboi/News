@@ -1,4 +1,4 @@
-package cl.ucn.disc.dbravo.news.Cache;
+package cl.ucn.disc.dbravo.news.cache;
 
 import android.content.Context;
 
