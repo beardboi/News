@@ -58,10 +58,4 @@ class UserController extends Controller
         // Return response with status code 201
         return response($response, 201);
     }
-
-    // Show all users
-    function users() {
-        return User::all();
-    }
-
 }
